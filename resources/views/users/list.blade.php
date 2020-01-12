@@ -2,7 +2,13 @@
 @extends('layouts.app')
 
 @section('content')
-
+@if (Session::get('message'))
+    <div class="alert alert-success">
+        <ul>
+          <li>{{ Session::get('message') }}</li>
+        </ul>
+    </div>
+@endif
     <h1>User list :</h1><br>
 <table class="table table-striped table-dark">
         <thead>

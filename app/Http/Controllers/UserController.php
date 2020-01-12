@@ -37,8 +37,14 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $user->save();
-        return redirect('/users');
+        $userCreated = $user->save();
+
+        if ($userCreated) {
+            $message = "User created with success";
+            return redirect('/users')->with('message',$message);
+        } else {
+            $message = "ERROR : user not created";
+        }
     }
 
     public function edit(User $user)
@@ -49,15 +55,27 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
-        return redirect('/users');
+        $userUpdated = $user->update($request->all());
+
+        if ($userUpdated) {
+            $message = "User updated with success";
+            return redirect('/users')->with('message',$message);
+        } else {
+            $message = "ERROR : user is not updated";
+        }
+        
         return response()->json($user, 200);
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
+        $userDeleted = $user->delete();
 
-        return redirect('/users');
+        if ($userDeleted) {
+            $message = "User deleted with success";
+            return redirect('/users')->with('message',$message);
+        } else {
+            $message = "ERROR : user is not deleted";
+        }
     }
 }
