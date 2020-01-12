@@ -13,7 +13,13 @@
         </ul>
     </div>
 @endif
-
+@if (Session::get('message'))
+    <div class="alert alert-danger">
+        <ul>
+          <li>{{ Session::get('message') }}</li>
+        </ul>
+    </div>
+@endif
     <form action="/users" method="post">
         @csrf
     <input type="text" name="name" placeholder="name" <?php if($user ?? '') : ?> value="{{$user->name}}" <?php endif; ?> >

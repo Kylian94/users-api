@@ -2,6 +2,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (Session::get('message'))
+    <div class="alert alert-danger">
+        <ul>
+          <li>{{ Session::get('message') }}</li>
+        </ul>
+    </div>
+@endif
     <h1>Add users</h1>
     
 
