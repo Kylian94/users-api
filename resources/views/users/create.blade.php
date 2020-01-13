@@ -20,13 +20,13 @@
         </ul>
     </div>
 @endif
-    <form action="/users" method="post">
+    <form action="/users" method="post" class="col-6 d-flex flex-column align-items-start">
         @csrf
-    <input type="text" name="name" placeholder="name" <?php if($user ?? '') : ?> value="{{$user->name}}" <?php endif; ?> >
-    <input type="email" name="email" placeholder="email" <?php if($user ?? '') : ?> value="{{$user->email}}" <?php endif; ?> >
-    <input type="password" name="password" placeholder="password" <?php if($user ?? '') : ?> value="{{$user->password}}" <?php endif; ?> >
-    <button type="submit">Create</button>
-    
-    
+    <input type="text" class="col-8 py-1 my-1" name="name" placeholder="name" >
+    <input type="email" class="col-8 py-1 my-1" name="email" placeholder="email" >
+    <input type="password" class=" col-8 py-1 my-1" name="password" placeholder="password">
+    <div class="mt-2 p-0 col-8">
+        <button type="submit" class="btn btn-success">Create</button>
+    </div>
     </form>
 @endsection
