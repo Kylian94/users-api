@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users =  User::all();
+        $users =  User::all()->sortByDesc("id");
         return view("users.list", compact("users"));
     }
 
@@ -41,7 +41,7 @@ class UserController extends Controller
 
         if ($userCreated) {
             $message = "User created with success";
-            return redirect('/users')->with('message',$message);
+            return redirect('/users')->with('message', $message);
         } else {
             $message = "ERROR : user not created";
         }
@@ -59,11 +59,11 @@ class UserController extends Controller
 
         if ($userUpdated) {
             $message = "User updated with success";
-            return redirect('/users')->with('message',$message);
+            return redirect('/users')->with('message', $message);
         } else {
             $message = "ERROR : user is not updated";
         }
-        
+
         return response()->json($user, 200);
     }
 
@@ -73,7 +73,7 @@ class UserController extends Controller
 
         if ($userDeleted) {
             $message = "User deleted with success";
-            return redirect('/users')->with('message',$message);
+            return redirect('/users')->with('message', $message);
         } else {
             $message = "ERROR : user is not deleted";
         }

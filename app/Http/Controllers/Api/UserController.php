@@ -21,7 +21,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $user = User::create($request->all());
+        return $user;
     }
     /**
      * Display the specified resource.
@@ -43,6 +44,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
+        $result = $user->get();
+        return $result;
     }
     /**
      * Remove the specified resource from storage.
@@ -52,10 +55,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-
         $archive = $user->get();
         $user->delete();
-
         return $archive;
     }
 }
