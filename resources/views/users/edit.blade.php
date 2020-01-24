@@ -10,7 +10,7 @@
         </ul>
     </div>
 @endif
-    <h1>Add users</h1>
+    <h1>Edit users</h1>
     
 
     

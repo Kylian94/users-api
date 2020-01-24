@@ -10,7 +10,7 @@
     </div>
 @endif
     <h1>User list :</h1><br>
-<table class="table table-striped table-dark">
+<table class="table table-striped table-hover table-responsive">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -26,7 +26,7 @@
             <th scope="row">{{ $user->id }}</th>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            <td>{{ $user->password }}</td>
+            <td>{{ Str::limit($user->password, 20) }}</td>
           <td class="d-flex align-items-center justify-content-start">
                 <form class="mr-2" action="/users/{{ $user->id }}" method="get">
                     {{ method_field('show') }}
